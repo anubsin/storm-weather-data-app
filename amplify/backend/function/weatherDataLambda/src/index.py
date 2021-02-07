@@ -3,13 +3,14 @@ from weatherData import generateWeatherData
 
 def handler(event, context):
   
-  plot_graph_embed_frame = generateWeatherData()
+  weathwerData = json.loads(generateWeatherData())
 
   body = {
     'year': 2018,
-    'totalEvents': 115,
+    'totalEvents': weathwerData["eventsCount"],
+    'totalDeaths': weathwerData["deathsCount"],
     'state': 'KY',
-    'graph_encoded': plot_graph_embed_frame
+    'graph_encoded': weathwerData["graphURL"]
   }
 
   response = {

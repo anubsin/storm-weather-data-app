@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "weatherdatareactappf6139386": {}
+      },
+      "function": {
+        "weatherDataLambda": {}
       }
     }
   }
