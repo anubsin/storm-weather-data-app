@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/stormdata",
+            "lambdaFunction": "weatherDataLambda",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/stormdata"
+        }
+    ],
+    "resourceName": "weatherApi",
+    "apiName": "weatherApi",
+    "functionArns": [
+        {
+            "lambdaFunction": "weatherDataLambda"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-weatherdatareactapp-dev-140638-authRole",
+        "unAuthRoleName": "amplify-weatherdatareactapp-dev-140638-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "weatherDataLambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
