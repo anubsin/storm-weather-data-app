@@ -14,6 +14,7 @@ function App() {
                             year: action.payload.year,
                             province: action.payload.province,
                             totalEvents: action.payload.totalEvents,
+                            totalDeaths: action.payload.totalDeaths,
                             graph_encoded: action.payload.graph_encoded
                           }
 
@@ -28,6 +29,7 @@ function App() {
       province: 'KY',
       year:'2018',
       totalEvents: '',
+      totalDeaths: '',
       graph_encoded: ''
     }
   }
@@ -46,7 +48,7 @@ function App() {
     }
     const apiData = await API.get('weatherApi', '/stormdata', requestInfo) 
    // setWeatherData({year: apiData.year, totalEvents: apiData.totalEvents, state: apiData.state, graph_encoded: apiData.graph_encoded})
-   dispatch({type: 'setweatherdata', payload: {year: apiData.year, province: apiData.state, totalEvents: apiData.totalEvents, graph_encoded: apiData.graph_encoded}})
+   dispatch({type: 'setweatherdata', payload: {year: apiData.year, province: apiData.state, totalEvents: apiData.totalEvents, totalDeaths: apiData.totalDeaths, graph_encoded: apiData.graph_encoded}})
   }
  
   useEffect(() => {
@@ -60,7 +62,8 @@ function App() {
         <h1>Weather Data Summary for {state.weatherData.year} for {state.weatherData.province}</h1>
       </header>
       <div className='container'>
-        <h3>Total events: {state.weatherData.totalEvents}</h3>
+        <div className='block'>Total events: {state.weatherData.totalEvents}</div>
+        <div className='block'>Total fatalities: {state.weatherData.totalDeaths}</div>
       </div>
       <div className='container' min-height='100vh'>
         <Iframe source={state.weatherData.graph_encoded} /> 
