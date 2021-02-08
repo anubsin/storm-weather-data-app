@@ -69,7 +69,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-weatherdatareactapp-dev-140638-deployment",
-          "S3Key": "amplify-builds/weatherDataLambda-34685a4f30704b736b5a-build.zip"
+          "S3Key": "amplify-builds/weatherDataLambda-61516248673445337a39-build.zip"
         }
       }
     },

@@ -15,7 +15,9 @@ function App() {
                             province: action.payload.province,
                             totalEvents: action.payload.totalEvents,
                             totalDeaths: action.payload.totalDeaths,
-                            graph_encoded: action.payload.graph_encoded
+                            graph_encoded: action.payload.graph_encoded,
+                            title: action.payload.title,
+                            description: action.payload.description
                           }
 
                 }
@@ -28,9 +30,11 @@ function App() {
     weatherData: {
       province: 'KY',
       year:'2018',
-      totalEvents: '',
-      totalDeaths: '',
-      graph_encoded: ''
+      totalEvents: 'loading...',
+      totalDeaths: 'loading...',
+      graph_encoded: '',
+      title: '',
+      description: ''
     }
   }
 
@@ -47,8 +51,9 @@ function App() {
       }
     }
     const apiData = await API.get('weatherApi', '/stormdata', requestInfo) 
-   // setWeatherData({year: apiData.year, totalEvents: apiData.totalEvents, state: apiData.state, graph_encoded: apiData.graph_encoded})
-   dispatch({type: 'setweatherdata', payload: {year: apiData.year, province: apiData.state, totalEvents: apiData.totalEvents, totalDeaths: apiData.totalDeaths, graph_encoded: apiData.graph_encoded}})
+   
+   dispatch({type: 'setweatherdata', payload: {year: apiData.year, province: apiData.state, totalEvents: apiData.totalEvents, 
+    totalDeaths: apiData.totalDeaths, graph_encoded: apiData.graph_encoded, title: apiData.title, description: apiData.description}})
   }
  
   useEffect(() => {
@@ -66,7 +71,9 @@ function App() {
         <div className='block'>Total fatalities: {state.weatherData.totalDeaths}</div>
       </div>
       <div className='container' min-height='100vh'>
+        <h3>{state.weatherData.title}</h3>
         <Iframe source={state.weatherData.graph_encoded} /> 
+        <p>{state.weatherData.description}</p>
       </div>
       <footer>
         <div className='footer'>
